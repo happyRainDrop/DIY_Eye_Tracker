@@ -1,4 +1,0 @@
-# Created by cloud-init v. 25.2 on Thu, 18 Jun 2026 00:16:52 +0000
-
-# User rules for eye
-eye ALL=(ALL) NOPASSWD:ALL
