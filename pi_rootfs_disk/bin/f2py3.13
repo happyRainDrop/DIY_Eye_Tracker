@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+if [ -x /usr/bin/python3.13 ]; then
+    exec /usr/bin/python3.13 /usr/bin/f2py "$@"
+fi
+
+cat >&2 <<EOF
+f2py3.13: error: python3.13 is not installed.
+Please run f2py or f2py3 instead, or install the python3.13 package.
+EOF
+
+exit 1
+
