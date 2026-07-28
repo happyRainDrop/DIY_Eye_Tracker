@@ -29,6 +29,8 @@ class USBVideoCapture:
     def __init__(self, src="/dev/video0", width=640, height=480):
         # Open via explicit V4L2 backend
         self.cap = cv2.VideoCapture(src, cv2.CAP_V4L2)
+        if not self.cap.isOpened():
+    	    raise RuntimeError(f"Cannot open {src}")
 
         # Request MJPEG encoding to keep USB bandwidth low and FPS high
         self.cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
@@ -66,6 +68,9 @@ class USBVideoCapture:
 # MAIN PI STREAMING CODE
 # =====================================
 # 1. CSI Eye Camera Setup
+cameras = Picamera2.global_camera_info()
+print("PI CAMERAS: ")
+print(cameras)
 eye_cam = Picamera2()
 eye_config = eye_cam.create_preview_configuration(main={"size": (640, 480)})
 eye_cam.configure(eye_config)
@@ -102,10 +107,12 @@ try:
             world_jpeg = None
 
         # --- Send Frames ---
-        socket.send(b"\x00" + eye_jpeg.tobytes())
+        #socket.send(b"\x00" + eye_jpeg.tobytes())
 
-        if world_jpeg is not None:
-            socket.send(b"\x01" + world_jpeg.tobytes())
+        #if world_jpeg is not None:
+            #socket.send(b"\x01" + world_jpeg.tobytes())
+
+        socket.send_multipart([eye_jpeg.tobytes(), world_jpeg.tobytes()])
 
         time.sleep(0.005)
 
