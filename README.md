@@ -3,7 +3,7 @@
 Tracks where the user is looking! This setup has 2 cameras on a Pi: one camera facing the eye, the other facing the world.
 For my personal results with this, see my [engineering portfolio](https://sites.google.com/view/rberkun/personal-projects?authuser=0).
 
-This is inspired by and builds off of [Jason Orlosky's](https://github.com/JEOresearch/EyeTracker) work. Specifically, I used OsloskyEyeTrackerLite for pupil detection, because the 3D gaze vector thing wasn't working out for me + I needed something more lightweight for streaming. I don't specialize in computer vision so I vibe coded the whole project ([as suggested by Orlosky himself!](https://www.jeoresearch.com/eyetracking.html#:~:text=Step%208%3A%20Use%20AI%20to%20build%20your%20own%20gaze%20application)).  
+This is inspired by and builds off of [Jason Orlosky's](https://github.com/JEOresearch/EyeTracker) work. Specifically, I used OsloskyEyeTrackerLite for pupil detection, because the 3D gaze vector thing wasn't working out for me + I needed something more lightweight for streaming. I don't specialize in computer vision so I vibe coded the whole project ([as suggested by Orlosky himself!]). (https://www.jeoresearch.com/eyetracking.html#:~:text=Step%208%3A%20Use%20AI%20to%20build%20your%20own%20gaze%20application)).  
 
 ## Materials + Construction
 ### Materials
@@ -61,7 +61,8 @@ This is inspired by and builds off of [Jason Orlosky's](https://github.com/JEOre
     - Adjust your head so that your computer screen takes up most of your desired field of view. By "desired field of view," I mean you should calibrate this to what your desired use case is. For example, if I'm planning to play piano, I'll put my laptop low in my lap to mimck how I'll be looking down at my hands. If I'm going to be doing something on my laptop, I'll try to sit closer to the laptop on my desk.
     - Press space while the world-facing camera stream is selected to start the calibration process.
     - The calibration process shows you a grid of dots on your computer screen. You should fixate on each dot as it is shown. When the dot is pink, calibration is not being done, and you can use this time to move your eyes/blink. When the dot is green, fixate your eyes on the dot and don't move.
-    - When calibration finishes, check the files in `calibration_debug`.      
+    - When calibration finishes, check the files in `calibration_debug`. Check that for each dot, the script correctly identified where the dot is on the computer screen as well as reasonably labeled your pupil location. (It is ok if a few dots are "skipped" and did not make the calibration. If a ton of them are skipped, try changing your lighting -- I've found that having a lamp right slightly above + behind the laptop helps).
+    - If your calibration results are bad you can calibrate again, but beware re-running the calibration script deletes all your old files.
 - **Record**:
   - Run `dual_eye_tracker_gui_v3.py` and you should see a stream of your eye + the world camera side by side. Where you are looking is marked on the world camera stream with a red dot.
   - Theoretically the GUI should be able to record videos, in practice the timing of the videos is really off for some reason. So I use a built-in Windows screen recorder of the stream to take my data.
