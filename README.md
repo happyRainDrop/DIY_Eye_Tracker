@@ -3,7 +3,7 @@
 Tracks where the user is looking! This setup has 2 cameras on a Pi: one camera facing the eye, the other facing the world.
 For my personal results with this, see my [engineering portfolio](https://sites.google.com/view/rberkun/personal-projects?authuser=0).
 
-This is inspired by and builds off of [Jason Orlosky's](https://github.com/JEOresearch/EyeTracker) work. Specifically, I used OsloskyEyeTrackerLite for pupil detection, because the 3D gaze vector thing wasn't working out for me + I needed something more lightweight for streaming. I don't specialize in computer vision so I vibe coded the whole project ([as suggested by Orlosky himself!]). (https://www.jeoresearch.com/eyetracking.html#:~:text=Step%208%3A%20Use%20AI%20to%20build%20your%20own%20gaze%20application)).  
+This is inspired by and builds off of [Jason Orlosky's](https://github.com/JEOresearch/EyeTracker) work. Specifically, I used OsloskyEyeTrackerLite for pupil detection, because the 3D gaze vector thing wasn't working out for me + I needed something more lightweight for streaming. I don't specialize in computer vision so I vibe coded the whole project ([as suggested by Orlosky himself!] (https://www.jeoresearch.com/eyetracking.html#:~:text=Step%208%3A%20Use%20AI%20to%20build%20your%20own%20gaze%20application)).  
 
 ## Materials + Construction
 ### Materials
